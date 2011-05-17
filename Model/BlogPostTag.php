@@ -48,7 +48,7 @@ class BlogPostTag extends AppModel {
 		),
 	);
 
-  protected $_findMethods = array(
+  public $findMethods = array(
     'cloud' => true,
   );
 

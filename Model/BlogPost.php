@@ -145,7 +145,7 @@ class BlogPost extends AppModel {
    *
    * @var array
    */
-  protected $_findMethods = array(
+  public $findMethods = array(
     'archives' => true,
     'byCategory' => true,
     'byTag' => true,
