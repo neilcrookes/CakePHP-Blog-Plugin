@@ -3,7 +3,7 @@ if (empty($categories)) {
   return;
 }
 ?>
-<section class="categories">
+<section id="categories">
   <header>
     <h3><?php echo __('Categories'); ?></h3>
   </header>

@@ -3,7 +3,7 @@ if (empty($tags)) {
   return;
 }
 ?>
-<section class="tag-cloud">
+<section id="tag-cloud">
   <header>
     <h3><?php echo __('Tags'); ?></h3>
   </header>

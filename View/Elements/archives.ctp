@@ -3,7 +3,7 @@ if (empty($archives)) {
   return;
 }
 ?>
-<section class="archives">
+<section id="archives">
   <header>
     <h3><?php echo __('Archives'); ?></h3>
   </header>

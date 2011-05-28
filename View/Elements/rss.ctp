@@ -1,4 +1,4 @@
-<section class="rss">
+<section id="rss">
   <?php echo $this->Blog->rss(); ?>
   <?php
   $filteredBy = $this->Blog->filtered();
