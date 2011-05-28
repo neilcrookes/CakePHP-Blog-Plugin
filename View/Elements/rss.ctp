@@ -1,9 +1,16 @@
 <section id="rss">
-  <?php echo $this->Blog->rss(); ?>
-  <?php
-  $filteredBy = $this->Blog->filtered();
-  if ($filteredBy && in_array($filteredBy, array('category', 'tag'))) {
-    echo $this->Blog->rssFiltered($filteredBy, __('RSS for posts ' . $this->Blog->filterDescription(), true));
-  }
-  ?>
+  <header>
+    <h3>Subscribe</h3>
+  </header>
+  <nav>
+    <ul>
+      <li><?php echo $this->Blog->rss(); ?></li>
+      <?php
+      $filteredBy = $this->Blog->filtered();
+      if ($filteredBy && in_array($filteredBy, array('category', 'tag'))) {
+        echo '<li>' . $this->Blog->rssFiltered($filteredBy, __('RSS for posts ' . $this->Blog->filterDescription(), true)) . '</li>';
+      }
+      ?>
+    </ul>
+  </nav>
 </section>
