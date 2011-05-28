@@ -1,6 +1,6 @@
 <div id="content">
 
-  <aritcle>
+  <article>
 
     <header>
       <h2><?php echo $blogPost['BlogPost']['title']; ?></h2>
