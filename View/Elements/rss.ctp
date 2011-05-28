@@ -4,7 +4,7 @@
   </header>
   <nav>
     <ul>
-      <li><?php echo $this->Blog->rss(); ?></li>
+      <li><?php echo $this->Blog->rss(__('RSS for all posts', true)); ?></li>
       <?php
       $filteredBy = $this->Blog->filtered();
       if ($filteredBy && in_array($filteredBy, array('category', 'tag'))) {
