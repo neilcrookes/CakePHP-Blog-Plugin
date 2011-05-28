@@ -20,19 +20,15 @@
           </p>
         </header>
 
-	<?php if (strtolower($blogSettings['use_summary_or_body_on_post_index']) == 'excerpt') : ?>
-
-	  <p class="summary"><?php echo $blogPost['BlogPost']['summary']; ?></p>
-
-	<?php else : ?>
-
-          <div class="body">
+        <?php if (strtolower($blogSettings['use_summary_or_body_on_post_index']) == 'excerpt') : ?>
+          <p class="summary"><?php echo $blogPost['BlogPost']['summary']; ?></p>
+        <?php else : ?>
+          <div class="post">
             <?php echo $blogPost['BlogPost']['body']; ?>
-	  </div>
+          </div>
+        <?php endif; ?>
 
-	<?php endif; ?>
-
-      </aticle>
+      </article>
 
     <?php endforeach; ?>
 
