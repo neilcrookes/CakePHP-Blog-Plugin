@@ -13,7 +13,7 @@ class BlogHelper extends AppHelper {
 
   /**
    * Returns a nested unordered list of links like a menu.
-   * 
+   *
    * @param array $items A nested list of items (see return values for
    * BlogPost::find('archives') for an example format)
    * @param array $options Keys can include:
@@ -75,7 +75,7 @@ class BlogHelper extends AppHelper {
 	$aOptions = array();
 	if (!empty($aClasses)) {
 		$aOptions = array('class' => implode(' ', $aClasses));
-        }	
+        }
         $out .= $this->Html->link($item['text'], $item['url'], $aOptions, null, false);
       } else {
          $out .= $item['text'];
@@ -94,25 +94,34 @@ class BlogHelper extends AppHelper {
 
   /**
    * Returns the RSS link for all blog posts.
-   * 
+   *
    * @param string $text
    * @param array $url
    * @param array $options
    * @return string
    */
   public function rss($text = 'RSS', $url = array(), $options = array()) {
-    $url = array_merge(array(
-      'plugin' => 'blog',
-      'controller' => 'blog_posts',
-      'action' => 'index',
-      'ext' => 'rss',
-    ), $url);
     $options = array_merge(array(
       'type' => 'application/rss+xml',
       'class' => 'rss',
       'escape' => false
     ), $options);
-    return $this->Html->link(__($text, true), $url, $options);
+    return $this->Html->link(__($text, true), $this->rssUrl($url), $options);
+  }
+
+  /**
+   * Returns the URL for the Blog RSS feed
+   *
+   * @param array URL style array
+   * @return array
+   */
+  public function rssUrl($url = array()) {
+    return array_merge(array(
+      'plugin' => 'blog',
+      'controller' => 'blog_posts',
+      'action' => 'index',
+      'ext' => 'rss',
+    ), $url);
   }
 
   /**
@@ -139,7 +148,7 @@ class BlogHelper extends AppHelper {
   /**
    * Returns a human readable sentence that describes how the blog posts have
    * been filtered.
-   * 
+   *
    * @return string
    */
   public function filterDescription() {
@@ -159,7 +168,7 @@ class BlogHelper extends AppHelper {
    * Returns an array that can be passed to CakePHP's core Paginator::options()
    * method to ensure the filter parameters are persisted after clicking on a
    * paging link.
-   * 
+   *
    * @return array
    */
   public function getPaginatorOptions() {
@@ -182,7 +191,7 @@ class BlogHelper extends AppHelper {
    * If the current request is for a filtered list of blog posts, return the
    * type of filter, e.g. 'category', 'tag' or 'archive', or false if not
    * currently being filtered.
-   * 
+   *
    * @return string
    */
   public function filtered() {
