@@ -71,14 +71,14 @@ class BlogHelper extends AppHelper {
       if (!empty($item['url'])) {
         if (!empty($options['url'])) {
           $item['url'] = array_merge($options['url'], $item['url']);
-	}
-	$aOptions = array();
-	if (!empty($aClasses)) {
-		$aOptions = array('class' => implode(' ', $aClasses));
+        }
+        $aOptions = array();
+        if (!empty($aClasses)) {
+          $aOptions = array('class' => implode(' ', $aClasses));
         }
         $out .= $this->Html->link($item['text'], $item['url'], $aOptions, null, false);
       } else {
-         $out .= $item['text'];
+        $out .= $item['text'];
       }
       if (!empty($item['children'])) {
         $out .= $this->nav($item['children'], $options);
@@ -164,22 +164,10 @@ class BlogHelper extends AppHelper {
    * @return string
    */
   public function rssChannelLink() {
-    $rssChannelLink = array(
-      'plugin' => 'blog',
-      'controller' => 'blog_posts',
-      'action' => 'index',
-    );
-    switch ($this->filtered()) {
-      case 'category':
-        $rssChannelLink['category'] = $this->params['category'];
-        break;
-      case 'tag':
-        $rssChannelLink['tag'] = $this->params['tag'];
-        break;
-      default:
-        break;
+    if (($filteredBy = $this->filtered()) != false) {
+      return $this->rssUrl(array($filteredBy => $this->params[$filteredBy]));
     }
-    return $rssChannelLink;
+    return $this->rssUrl();
   }
 
   /**
@@ -190,7 +178,6 @@ class BlogHelper extends AppHelper {
   public function rssLinkTag() {
     return '<link rel="alternate" type="application/rss+xml" href="' . $this->url($this->rssChannelLink()) . '" title="' . $this->rssChannelTitle() . '">';
   }
-
 
   /**
    * Returns the RSS link for all blog posts for the selected category or the
