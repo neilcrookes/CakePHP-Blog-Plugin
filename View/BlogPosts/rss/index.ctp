@@ -18,8 +18,8 @@ switch ($this->Blog->filtered()) {
     $rssChannelLink['tag'] = $this->params['tag'];
     break;
   default:
-    $rssChannelTitle = $blogSettings['RSS Channel Title'];
-    $rssChannelDescription = $blogSettings['RSS Channel Description'];
+    $rssChannelTitle = $blogSettings['rss_channel_title'];
+    $rssChannelDescription = $blogSettings['rss_channel_description'];
     break;
 }
 
