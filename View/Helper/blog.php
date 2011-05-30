@@ -125,6 +125,74 @@ class BlogHelper extends AppHelper {
   }
 
   /**
+   * Returns the RSS Channel Title for the default, category or tag
+   *
+   * @return string
+   */
+  public function rssChannelTitle() {
+    switch ($this->filtered()) {
+      case 'category':
+        return $this->_View->viewVars['category']['BlogPostCategory']['rss_channel_title'];
+      case 'tag':
+        return $this->_View->viewVars['tag']['BlogPostTag']['rss_channel_title'];
+        break;
+      default:
+        return $this->_View->viewVars['blogSettings']['rss_channel_title'];
+        break;
+    }
+  }
+
+   /**
+   * Returns the RSS Channel Description for the default, category or tag
+   *
+   * @return string
+   */
+  public function rssChannelDescription() {
+    switch ($this->filtered()) {
+      case 'category':
+        return $this->_View->viewVars['category']['BlogPostCategory']['rss_channel_description'];
+      case 'tag':
+        return $this->_View->viewVars['tag']['BlogPostTag']['rss_channel_description'];
+      default:
+        return $this->_View->viewVars['blogSettings']['rss_channel_description'];
+    }
+  }
+
+  /**
+   * Returns the RSS Channel Link for the default, category or tag
+   *
+   * @return string
+   */
+  public function rssChannelLink() {
+    $rssChannelLink = array(
+      'plugin' => 'blog',
+      'controller' => 'blog_posts',
+      'action' => 'index',
+    );
+    switch ($this->filtered()) {
+      case 'category':
+        $rssChannelLink['category'] = $this->params['category'];
+        break;
+      case 'tag':
+        $rssChannelLink['tag'] = $this->params['tag'];
+        break;
+      default:
+        break;
+    }
+    return $rssChannelLink;
+  }
+
+  /**
+   * Returns the <link> tag for the default RSS channel or filtered channel
+   *
+   * @return string
+   */
+  public function rssLinkTag() {
+    return '<link rel="alternate" type="application/rss+xml" href="' . $this->url($this->rssChannelLink()) . '" title="' . $this->rssChannelTitle() . '">';
+  }
+
+
+  /**
    * Returns the RSS link for all blog posts for the selected category or the
    * selected tag.
    *
