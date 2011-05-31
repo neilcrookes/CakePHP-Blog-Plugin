@@ -10,6 +10,12 @@ App::uses('Sanitize', 'Utility');
 
 foreach ($blogPosts as $blogPost) {
 
+  if (strtolower($blogSettings['use_summary_or_body_in_rss_feed']) == 'body') {
+    $description = $blogPost['BlogPost']['body'];
+  } else {
+    $description = $blogPost['BlogPost']['summary'];
+  }
+
   echo $this->Rss->item(array(), array(
     'title' => $blogPost['BlogPost']['title'],
     'link' => array(
@@ -18,7 +24,7 @@ foreach ($blogPosts as $blogPost) {
       'action' => 'view',
       'slug' => $blogPost['BlogPost']['slug']
     ),
-    'description' => Sanitize::stripScripts($blogPost['BlogPost']['summary']),
+    'description' => Sanitize::stripScripts($description),
     'pubDate' => strtotime($blogPost['BlogPost']['created'])
   ));
 
