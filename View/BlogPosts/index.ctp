@@ -12,15 +12,13 @@
 
         <header>
           <h2><?php echo $this->Html->link($blogPost['BlogPost']['title'], array('action' => 'view', 'slug' => $blogPost['BlogPost']['slug']), array('title' => $blogPost['BlogPost']['title'], 'rel' => 'bookmark')); ?></h2>
-          <p class="published">
-            Published on
-            <time pubdate datetime="<?php echo date('c', $createdTimestamp = strtotime($blogPost['BlogPost']['created'])); ?>">
-              <?php echo date('d M Y', $createdTimestamp); ?>
-            </time>
-          </p>
+          <time pubdate datetime="<?php echo date('c', $createdTimestamp = strtotime($blogPost['BlogPost']['created'])); ?>">
+              <?php echo date($blogSettings['published_format_on_post_index'], $createdTimestamp); ?>
+          </time>
+          <?php echo $blogSettings['share_code_on_post_index']; ?>
         </header>
 
-        <?php if (strtolower($blogSettings['use_summary_or_body_on_post_index']) == 'excerpt') : ?>
+        <?php if (strtolower($blogSettings['use_summary_or_body_on_post_index']) == 'summary') : ?>
           <p class="summary"><?php echo $blogPost['BlogPost']['summary']; ?></p>
         <?php else : ?>
           <div class="post">
@@ -32,13 +30,18 @@
 
     <?php endforeach; ?>
 
-    <nav id="paging">
-      <?php
-      $this->Paginator->options(array('url' => $this->Blog->getPaginatorOptions()));
-      echo $this->Paginator->prev('« Newer posts', null, null, array('class' => 'disabled'));
-      echo $this->Paginator->next('Older posts »', null, null, array('class' => 'disabled'));
+    <?php
+    $paging = $this->Paginator->params();
+    if ($paging['pageCount'] > 1) :
       ?>
-    </nav>
+      <nav id="paging">
+        <?php
+        $this->Paginator->options(array('url' => $this->Blog->getPaginatorOptions()));
+        echo $this->Paginator->prev('« Newer posts', null, null, array('class' => 'disabled'));
+        echo $this->Paginator->next('Older posts »', null, null, array('class' => 'disabled'));
+        ?>
+      </nav>
+    <?php endif; ?>
 
   <?php else : ?>
 

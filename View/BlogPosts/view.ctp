@@ -4,12 +4,9 @@
 
     <header>
       <h2><?php echo $blogPost['BlogPost']['title']; ?></h2>
-      <p class="published">
-        Published on 
-        <time pubdate datetime="<?php echo date('c', strtotime($blogPost['BlogPost']['created'])); ?>">
-          <?php echo date('d M Y', strtotime($blogPost['BlogPost']['created'])); ?>
-        </time>
-      </p>
+      <time pubdate datetime="<?php echo date('c', strtotime($blogPost['BlogPost']['created'])); ?>">
+        <?php echo date($blogSettings['published_format_on_post_view'], strtotime($blogPost['BlogPost']['created'])); ?>
+      </time>
     </header>
 
     <?php if (strtolower($blogSettings['show_summary_on_post_view']) == 'yes') : ?>
@@ -38,6 +35,14 @@
         </nav>
       <?php endif; ?>
 
+      <ul class="share">
+        <li><g:plusone size="tall"></g:plusone></li>
+        <li><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a></li>
+        <li><iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>&layout=box_count"
+        scrolling="no" frameborder="0"
+        style="border:none; width:55px; height:65px"></iframe></li>
+      </ul>
+
     </footer>
 
   </article>
@@ -57,4 +62,9 @@
 $this->set('title_for_layout', $blogPost['BlogPost']['meta_title']);
 $this->set('metaDecsription', $blogPost['BlogPost']['meta_description']);
 $this->set('metaKeywords', $blogPost['BlogPost']['meta_keywords']);
-
+$this->set('metaOgTitle', $blogPost['BlogPost']['title']);
+$this->set('metaOgType', 'article');
+$this->set('metaOgUrl', 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+//$this->set('metaOgImage');
+$this->set('metaOgSiteName', $blogSettings['og:site_name']);
+$this->set('metaFbAdmins', $blogSettings['fb_admins']);
