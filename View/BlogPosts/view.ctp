@@ -2,7 +2,7 @@
 
   <article>
 
-    <header>
+    <header class="clearfix">
       <h2><?php echo $blogPost['BlogPost']['title']; ?></h2>
       <time pubdate datetime="<?php echo date('c', strtotime($blogPost['BlogPost']['created'])); ?>">
         <?php echo date($blogSettings['published_format_on_post_view'], strtotime($blogPost['BlogPost']['created'])); ?>

@@ -10,7 +10,7 @@
 
       <article<?php if ($blogPost['BlogPost']['sticky']) {echo ' class="sticky"';} ?>>
 
-        <header>
+        <header class="clearfix">
           <h2><?php echo $this->Html->link($blogPost['BlogPost']['title'], array('action' => 'view', 'slug' => $blogPost['BlogPost']['slug']), array('title' => $blogPost['BlogPost']['title'], 'rel' => 'bookmark')); ?></h2>
           <time pubdate datetime="<?php echo date('c', $createdTimestamp = strtotime($blogPost['BlogPost']['created'])); ?>">
               <?php echo date($blogSettings['published_format_on_post_index'], $createdTimestamp); ?>
