@@ -15,7 +15,6 @@
           <time pubdate datetime="<?php echo date('c', $createdTimestamp = strtotime($blogPost['BlogPost']['created'])); ?>">
               <?php echo date($blogSettings['published_format_on_post_index'], $createdTimestamp); ?>
           </time>
-          <?php echo $blogSettings['share_code_on_post_index']; ?>
         </header>
 
         <?php if (strtolower($blogSettings['use_summary_or_body_on_post_index']) == 'summary') : ?>
