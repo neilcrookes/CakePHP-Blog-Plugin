@@ -21,14 +21,14 @@
 
     <footer>
 
-      <?php if ($blogSettings['show_categories_on_post_view'] && !empty($blogPost['BlogPostCategory'])) : ?>
+      <?php if (strtolower($blogSettings['show_categories_on_post_view']) == 'yes' && !empty($blogPost['BlogPostCategory'])) : ?>
         <nav id="categories">
           <p><?php echo __('Posted in '); ?></p>
           <?php echo $this->Blog->nav($blogPost['BlogPostCategory'], array('url' => array('action' => 'index'))); ?>
         </nav>
       <?php endif; ?>
 
-      <?php if ($blogSettings['show_tags_on_post_view'] && !empty($blogPost['BlogPostTag'])) : ?>
+      <?php if (strtolower($blogSettings['show_tags_on_post_view']) == 'yes' && !empty($blogPost['BlogPostTag'])) : ?>
         <nav id="tags">
           <p><?php echo __('Tagged with '); ?></p>
           <?php echo $this->Blog->nav($blogPost['BlogPostTag'], array('url' => array('action' => 'index'))); ?>
