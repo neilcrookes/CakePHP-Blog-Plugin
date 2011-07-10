@@ -35,13 +35,7 @@
         </nav>
       <?php endif; ?>
 
-      <ul class="share">
-        <li><g:plusone size="medium"></g:plusone></li>
-        <li><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a></li>
-        <li><iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>&layout=button_count"
-        scrolling="no" frameborder="0"
-        style="border:none; width:90px; height:20px"></iframe></li>
-      </ul>
+      <?php echo $this->element('share'); ?>
 
     </footer>
 
