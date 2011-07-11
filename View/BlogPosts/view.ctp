@@ -37,6 +37,29 @@
 
       <?php echo $this->element('share'); ?>
 
+      <?php if (strtolower($blogSettings['use_disqus']) == 'yes') : ?>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = '<?php echo $blogSettings['disqus_shortname']; ?>'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = 'blog-post-<?php echo $blogPost['BlogPost']['id']; ?>';
+    var disqus_url = '<?php echo $this->Blog->permalink($blogPost); ?>';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      <?php endif; ?>
+
     </footer>
 
   </article>
@@ -58,7 +81,7 @@ $this->set('metaDescription', $blogPost['BlogPost']['meta_description']);
 $this->set('metaKeywords', $blogPost['BlogPost']['meta_keywords']);
 $this->set('metaOgTitle', $blogPost['BlogPost']['title']);
 $this->set('metaOgType', 'article');
-$this->set('metaOgUrl', 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+$this->set('metaOgUrl', $this->Blog->permalink($blogPost));
 //$this->set('metaOgImage');
 $this->set('metaOgSiteName', $blogSettings['og:site_name']);
 $this->set('metaFbAdmins', $blogSettings['fb_admins']);

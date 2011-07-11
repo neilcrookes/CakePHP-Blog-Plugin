@@ -325,4 +325,16 @@ class BlogHelper extends AppHelper {
 
   }
 
+  /**
+   * Returns a permalink for the given $blogPost according to the routes
+   */
+  public function permalink($blogPost) {
+    return Router::url(array(
+      'plugin' => 'blog',
+      'controller' => 'blog',
+      'action' => 'view',
+      'slug' => $blogPost['BlogPost']['slug'],
+    ), true);
+  }
+
 }
