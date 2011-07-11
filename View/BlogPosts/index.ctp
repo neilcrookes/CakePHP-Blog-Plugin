@@ -67,17 +67,17 @@
 switch ($this->Blog->filtered()) {
   case 'category':
     $this->set('title_for_layout', $category['BlogPostCategory']['meta_title']);
-    $this->set('metaDecsription', $category['BlogPostCategory']['meta_description']);
+    $this->set('metaDescription', $category['BlogPostCategory']['meta_description']);
     $this->set('metaKeywords', $category['BlogPostCategory']['meta_keywords']);
     break;
   case 'tag':
     $this->set('title_for_layout', $tag['BlogPostTag']['meta_title']);
-    $this->set('metaDecsription', $tag['BlogPostTag']['meta_description']);
+    $this->set('metaDescription', $tag['BlogPostTag']['meta_description']);
     $this->set('metaKeywords', $tag['BlogPostTag']['meta_keywords']);
     break;
   default:
     $this->set('title_for_layout', $blogSettings['meta_title']);
-    $this->set('metaDecsription', $blogSettings['meta_description']);
+    $this->set('metaDescription', $blogSettings['meta_description']);
     $this->set('metaKeywords', $blogSettings['meta_keywords']);
     break;
 }

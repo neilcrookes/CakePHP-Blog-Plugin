@@ -54,7 +54,7 @@
 
 <?php
 $this->set('title_for_layout', $blogPost['BlogPost']['meta_title']);
-$this->set('metaDecsription', $blogPost['BlogPost']['meta_description']);
+$this->set('metaDescription', $blogPost['BlogPost']['meta_description']);
 $this->set('metaKeywords', $blogPost['BlogPost']['meta_keywords']);
 $this->set('metaOgTitle', $blogPost['BlogPost']['title']);
 $this->set('metaOgType', 'article');
