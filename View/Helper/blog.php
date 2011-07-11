@@ -132,14 +132,16 @@ class BlogHelper extends AppHelper {
   public function rssChannelTitle() {
     switch ($this->filtered()) {
       case 'category':
-        return $this->_View->viewVars['category']['BlogPostCategory']['rss_channel_title'];
+        $rssChannelTitle = $this->_View->viewVars['category']['BlogPostCategory']['rss_channel_title'];
+        break;
       case 'tag':
-        return $this->_View->viewVars['tag']['BlogPostTag']['rss_channel_title'];
+        $rssChannelTitle = $this->_View->viewVars['tag']['BlogPostTag']['rss_channel_title'];
         break;
       default:
-        return $this->_View->viewVars['blogSettings']['rss_channel_title'];
+        $rssChannelTitle = $this->_View->viewVars['blogSettings']['rss_channel_title'];
         break;
     }
+    return htmlspecialchars($rssChannelTitle, ENT_NOQUOTES, 'UTF-8');
   }
 
    /**
@@ -150,12 +152,16 @@ class BlogHelper extends AppHelper {
   public function rssChannelDescription() {
     switch ($this->filtered()) {
       case 'category':
-        return $this->_View->viewVars['category']['BlogPostCategory']['rss_channel_description'];
+        $rssChannelDescription = $this->_View->viewVars['category']['BlogPostCategory']['rss_channel_description'];
+        break;
       case 'tag':
-        return $this->_View->viewVars['tag']['BlogPostTag']['rss_channel_description'];
+        $rssChannelDescription = $this->_View->viewVars['tag']['BlogPostTag']['rss_channel_description'];
+        break;
       default:
-        return $this->_View->viewVars['blogSettings']['rss_channel_description'];
+        $rssChannelDescription = $this->_View->viewVars['blogSettings']['rss_channel_description'];
+        break;
     }
+    return htmlspecialchars($rssChannelDescription, ENT_NOQUOTES, 'UTF-8');
   }
 
   /**
