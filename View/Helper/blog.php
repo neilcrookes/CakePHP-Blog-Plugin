@@ -331,7 +331,7 @@ class BlogHelper extends AppHelper {
   public function permalink($blogPost) {
     return Router::url(array(
       'plugin' => 'blog',
-      'controller' => 'blog',
+      'controller' => 'blog_posts',
       'action' => 'view',
       'slug' => $blogPost['BlogPost']['slug'],
     ), true);

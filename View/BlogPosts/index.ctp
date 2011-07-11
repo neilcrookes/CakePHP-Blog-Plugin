@@ -15,6 +15,10 @@
           <time pubdate datetime="<?php echo date('c', $createdTimestamp = strtotime($blogPost['BlogPost']['created'])); ?>">
               <?php echo date($blogSettings['published_format_on_post_index'], $createdTimestamp); ?>
           </time>
+          <?php if (strtolower($blogSettings['use_disqus']) == 'yes') : ?>
+            <?php echo $this->Html->link(__('View comments'), $this->Blog->permalink($blogPost) . '#disqus_thread', array('data-disqus-identifier' => 'blog-post-' . $blogPost['BlogPost']['id'])); ?>
+          <?php endif; ?>
+          
         </header>
 
         <?php if (strtolower($blogSettings['use_summary_or_body_on_post_index']) == 'summary') : ?>
@@ -58,6 +62,27 @@
   <?php echo $this->element('tag_cloud'); ?>
 
 </div>
+
+<?php if (strtolower($blogSettings['use_disqus']) == 'yes') : ?>
+
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = '<?php echo $blogSettings['disqus_shortname']; ?>'; // required: replace example with your forum shortname
+
+    <?php if (strtolower($blogSettings['disqus_developer']) == 'yes') : ?>
+      var disqus_developer = 1;
+    <?php endif; ?>
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+  </script>
+
+<?php endif; ?>
 
 <?php
 
