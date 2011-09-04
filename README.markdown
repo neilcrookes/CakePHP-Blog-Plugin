@@ -33,14 +33,14 @@ Requirements
 Installation
 ------------
 
-    git submodule add git://github.com/neilcrookes/CakePHP-Blog-Plugin.git app/plugins/blog
+    git submodule add git://github.com/neilcrookes/CakePHP-Blog-Plugin.git app/Plugin/Blog
 
 or download from http://github.com/neilcrookes/CakePHP-Blog-Plugin
 
-    // APP/config/route.php
-    include APP.'plugins'.DS.'blog'.DS.'config'.DS.'routes.php';
+    // APP/Config/Routes.php
+    include APP.'Plugin'.DS.'Blog'.DS.'Config'.DS.'routes.php';
 
-Run the SQL script in blog/config/schema/schema.sql
+Run the SQL script in Blog/Config/chema/schema.sql
 
 Go to mydomain.com/blog
 
