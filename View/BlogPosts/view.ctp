@@ -34,9 +34,11 @@
           <?php echo $this->Blog->nav($blogPost['BlogPostTag'], array('url' => array('action' => 'index'))); ?>
         </nav>
       <?php endif; ?>
-
-      <?php echo $this->element('share'); ?>
-
+      
+	  <?php if (strtolower($blogSettings['show_share_links']) == 'yes') { ?>
+        <?php echo $this->element('share'); ?>
+	  <?php } ?>
+	  
       <?php if (strtolower($blogSettings['use_disqus']) == 'yes') : ?>
 
         <div id="disqus_thread"></div>
