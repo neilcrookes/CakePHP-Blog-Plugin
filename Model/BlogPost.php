@@ -127,7 +127,8 @@ class BlogPost extends AppModel {
 		)
 	);
 
-  public function afterSave() {
+  public function afterSave($created) {
+    parent::afterSave($created);
     Cache::delete('blog_archives');
     Cache::delete('blog_categories');
     Cache::delete('blog_tags');
