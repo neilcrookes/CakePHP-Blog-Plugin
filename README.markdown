@@ -37,8 +37,13 @@ Installation
 
 or download from http://github.com/neilcrookes/CakePHP-Blog-Plugin
 
-    // APP/Config/Routes.php
-    include APP.'Plugin'.DS.'Blog'.DS.'Config'.DS.'routes.php';
+Add the following line to your /app/config/bootstrap.php
+
+    CakePlugin::load( array( 'Blog' => array( 'routes' => True ) ) );
+
+And add this line to /app/config/routes.php
+
+	CakePlugin::routes('Blog'); // Load Blog plugin routes
 
 Run the SQL script in Blog/Config/chema/schema.sql
 
@@ -49,9 +54,9 @@ See:
 * mydomain.com/admin/blog_posts for creating blog posts (and follow links to create the tags and categories first)
 * mydomain.com/admin/blog_settings for editing the settings (things like the index page title and RSS feed title etc)
 
-(Requires your Routing.prefixes is includes 'admin')
+(Requires that your Routing.prefixes includes 'admin')
 
-Todo
+To-do
 ----
 
 * Custom blog post content implementations
