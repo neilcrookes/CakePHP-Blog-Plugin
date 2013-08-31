@@ -21,7 +21,7 @@ Features
 Customisations
 --------------
 
-Create custom views in your app directory e.g. app/views/plugins/blog/blog_posts/index.ctp
+Create custom views in your app directory e.g. app/View/Plugin/Blog/BlogPosts/index.ctp
 
 Requirements
 ------------
