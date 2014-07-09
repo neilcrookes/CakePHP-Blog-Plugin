@@ -188,13 +188,13 @@ class BlogPostsController extends AppController {
    */
   public function view() {
 
-    if (empty($this->params['slug'])) {
+    if (empty($this->params['named']['slug'])) {
       throw new NotFoundException(__('Invalid Blog Post'));
     }
 
     $blogPost = $this->BlogPost->find('forView', array(
       'conditions' => array(
-        'BlogPost.slug' => $this->params['slug'],
+        'BlogPost.slug' => $this->params['named']['slug'],
       )
     ));
 
