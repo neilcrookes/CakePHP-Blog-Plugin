@@ -45,7 +45,7 @@ And add this line to /app/config/routes.php
 
 	CakePlugin::routes('Blog'); // Load Blog plugin routes
 
-Run the SQL script in Blog/Config/chema/schema.sql
+Run the SQL script in Blog/Config/schema/schema.sql
 
 Go to mydomain.com/blog
 
